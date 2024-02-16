@@ -1,26 +1,21 @@
 module Main where
 
-open import IO
-main = run (putStrLn "Hello, world!")
+open import Types.Nat
+open import Types.Bool
 
--- open import Types.Nat
--- open import Types.Bool
+open import Nat.Add
+open import Nat.Equal
 
--- open import Nat.Add
--- open import Nat.Equal
+open import Agda.Builtin.IO using (IO)
+open import Agda.Builtin.Unit using (⊤)
+open import String.Show using (show)
+open import Bool.To_String using (to_string)
 
--- main : Bool
--- main = equal 
---     (add 
---         (succ (succ zero))
---         (succ (succ (succ zero))))
---     (succ (succ (succ (succ (succ zero)))))
-
--- main : IO ⊤
--- main = show 
---     (to_string 
---         (equal 
---             (add 
---                 (succ (succ zero))
---                 (succ (succ (succ zero))))
---             (succ (succ (succ (succ (succ zero)))))))
+main : IO ⊤
+main = show
+    (to_string 
+        (equal 
+            (add 
+                (succ (succ zero))
+                (succ (succ (succ zero))))
+            (succ (succ (succ (succ (succ zero)))))))
